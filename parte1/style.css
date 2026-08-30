@@ -1,0 +1,30 @@
+/*
+primária: #1a3a5c
+acento: #c03a2b
+neutro: #f5f5f5
+*/
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+body { font-family: system-ui, sans-serif; color: black; background: #f5f5f5; line-height: 1.5; margin: 24px; }
+img { max-width: 100%; display: block; }
+button { font: inherit; cursor: pointer; }
+
+header { background: #1a3a5c; color: white; padding: 12px; }
+header h1 { margin: 12px; }
+header > h1 { font-size: 2rem; }
+header input { padding: 8px; border: 1px solid; border-radius: 4px; margin: 12px; }
+header button { padding: 6px; border: 1px solid #c03a2b; border-radius: 4px; color: #f5f5f5; background: #c03a2b;  }
+
+nav { background: #f5f5f5; margin: 24px; }
+
+.card {
+    padding: 16px;                 /* espaço interno */
+    border: 1px solid #ddd;      /* borda */
+    border-radius: 8px;            /* cantos */
+    box-shadow: 0 1px 4px #0002; /* sombra */
+    background: white;
+    margin: 24px;
+}
+
+footer { margin: 24px; }
