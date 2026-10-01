@@ -27,7 +27,7 @@
                     <h2>A Origem</h2>
                     <p>2010 - Ficção científica</p>
                     <p>Nota: &starf; &starf; &starf; &starf; &starf;</p>
-                    <p><span class="badge">assistido</span></p>
+                    <p><span class="badge assistido">assistido</span></p>
                     <div class="acoes">
                         <button>Editar</button>
                         <button>Remover</button>
@@ -38,7 +38,7 @@
                     <h2>Parasita</h2>
                     <p>2019 - Suspense</p>
                     <p>Nota: &starf; &starf; &starf; &starf; &star;</p>
-                    <p><span class="badge">assistido</span></p>
+                    <p><span class="badge assistido">assistido</span></p>
                     <div class="acoes">
                         <button>Editar</button>
                         <button>Remover</button>
@@ -49,7 +49,7 @@
                     <h2>O Auto da Compadecida</h2>
                     <p>2000 - Comédia</p>
                     <p>Nota: &starf; &starf; &starf; &starf; &starf;</p>
-                    <p><span class="badge">assistido</span></p>
+                    <p><span class="badge assistido">assistido</span></p>
                     <div class="acoes">
                         <button>Editar</button>
                         <button>Remover</button>
@@ -60,7 +60,7 @@
                     <h2>Duna: Parte Dois</h2>
                     <p>2024 - Ficção científica</p>
                     <p>Nota: &starf; &starf; &starf; &starf; &star;</p>
-                    <p><span class="badge">assistindo</span></p>
+                    <p><span class="badge assistindo">assistindo</span></p>
                     <div class="acoes">
                         <button>Editar</button>
                         <button>Remover</button>
@@ -71,7 +71,7 @@
                     <h2>Interestelar</h2>
                     <p>2014 - Ficção científica</p>
                     <p>Nota: &starf; &starf; &starf; &starf; &starf;</p>
-                    <p><span class="badge">quero assistir</span></p>
+                    <p><span class="badge quero">quero assistir</span></p>
                     <div class="acoes">
                         <button>Editar</button>
                         <button>Remover</button>
@@ -82,7 +82,7 @@
                     <h2>Cidade de Deus</h2>
                     <p>2002 - Drama</p>
                     <p>Nota: &starf; &starf; &starf; &starf; &star;</p>
-                    <p><span class="badge">quero assistir</span></p>
+                    <p><span class="badge quero">quero assistir</span></p>
                     <div class="acoes">
                         <button>Editar</button>
                         <button>Remover</button>
@@ -95,5 +95,54 @@
             <br>
             <a href="adicionar.html">Adicionar filme</a>
         </footer>
+        <div id="modal" hidden>
+            <div id="modal-conteudo">
+                <a href="index.html">← Voltar</a>
+                <h1>Adicionar filme</h1>
+                <form id="form-filme">
+                    <label for="titulo">Título</label>
+                    <br>
+                    <input id="titulo" name="titulo" type="text" required>
+                    <br>
+                    <br>
+                    <label for="ano">Ano</label>
+                    <br>
+                    <input id="ano" name="ano" type="number" min="1888" max="2030" step="1" required>
+                    <br>
+                    <br>
+                    <label for="genero">Gênero</label>
+                    <br>
+                    <input id="genero" name="genero" required>
+                    <br>
+                    <br>
+                    <label for="url">URL do pôster</label>
+                    <br>
+                    <input id="url" name="url" type="text">
+                    <br>
+                    <br>
+                    <label for="status">Status</label>
+                    <br>
+                    <select id="status" name="status" required>
+                        <option value="assistido">Assistido</option>
+                        <option value="assisindo">Assistindo</option>
+                        <option value="quero assistir">Quero assistir</option>
+                    </select>
+                    <br>
+                    <br>
+                    <label for="nota">Nota (1 a 5)</label>
+                    <br>
+                    <input id="nota" name="nota" type="number" min="1" max="5" step="1">
+                    <br>
+                    <br>
+                    <label for="comentario">Comentário</label>
+                    <br>
+                    <textarea id="comentario" name="comentario" rows="3" cols="50"></textarea>
+                    <br>
+                    <br>
+                    <button type="button">Cancelar</button>
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
     </body>
 </html>
