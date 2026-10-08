@@ -151,9 +151,9 @@ button:focus-visible {
     outline-offset: 2px;
 }
 header button:hover {
-    background: var(--cor-botao);
-    border-color: var(--cor-secundaria);
-    color: var(--cor-secundaria);
+    background: darkred;
+    border-color: darkred;
+    color: white;
 }
 nav button:hover {
     background: var(--cor-primaria);
