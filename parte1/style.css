@@ -54,7 +54,7 @@ header > h1 { font-size: 2rem; }
 header input {
     background: var(--cor-fundo);
     color: var(--cor-texto);
-    padding: 10px;
+    padding: 11px;
     border: 1px solid;
     border-radius: 6px;
     flex: 1 1 240px;
@@ -81,7 +81,7 @@ nav button {
     padding: 6px 14px;
     border: 1px solid var(--cor-primaria);
     background: var(--cor-botao);
-    border-radius: 6px;
+    border-radius: 8px;
 }
 nav button.ativo {
     background: var(--cor-primaria);

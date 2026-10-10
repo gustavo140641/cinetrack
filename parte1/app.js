@@ -1,13 +1,9 @@
 function rotuloStatus(status) {
-    const card_badge = document.querySelector('.card .badge');
     if (status === "assistido") {
-        card_badge.textContent = "Assistido";
         return "Assistido";
     } else if (status === "assistindo") {
-        card_badge.textContent = "Assistindo";
         return "Assistindo";
     } else if (status === "quero") {
-        card_badge.textContent = "Quero assistir";
         return "Quero assistir";
     } else {
         return status;
@@ -20,8 +16,6 @@ const estrelas = nota => {
         resultado += i <= nota ? "★" : "☆";
         resultado += " ";
     }
-    const card_nota = document.querySelector('.card .nota');
-    card_nota.textContent = resultado;
     return resultado;
 }
 
@@ -42,7 +36,7 @@ const filmesIniciais = [
         ano: 2010,
         genero: "Ficção científica",
         poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/9e3Dz7aCANy5aRUQF745IlNloJ1.jpg",
-        nota: "★ ★ ★ ★ ★",
+        nota: 5,
         status: "assistido",
         comentario: ""
     },
@@ -52,7 +46,7 @@ const filmesIniciais = [
         ano: 2019,
         genero: "Suspense",
         poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/igw938inb6Fy0YVcwIyxQ7Lu5FO.jpg",
-        nota: "★ ★ ★ ★ ☆",
+        nota: 4,
         status: "assistido",
         comentario: ""
     },
@@ -62,7 +56,7 @@ const filmesIniciais = [
         ano: 2000,
         genero: "Comédia",
         poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/imcOp1kJsCsAFCoOtY5OnPrFbAf.jpg",
-        nota: "★ ★ ★ ★ ★",
+        nota: 5,
         status: "assistido",
         comentario: ""
     },
@@ -72,7 +66,7 @@ const filmesIniciais = [
         ano: 2024,
         genero: "Ficção científica",
         poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/8LJJjLjAzAwXS40S5mx79PJ2jSs.jpg",
-        nota: "★ ★ ★ ★ ☆",
+        nota: 4,
         status: "assistindo",
         comentario: ""
     },
@@ -82,8 +76,8 @@ const filmesIniciais = [
         ano: 2014,
         genero: "Ficção científica",
         poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/6ricSDD83BClJsFdGB6x7cM0MFQ.jpg",
-        nota: "★ ★ ★ ★ ★",
-        status: "quero assistir",
+        nota: 5,
+        status: "quero",
         comentario: ""
     },
     {
@@ -92,8 +86,8 @@ const filmesIniciais = [
         ano: 2002,
         genero: "Drama",
         poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/gfnXixcGC060QcG6JPxN6AMdVsq.jpg",
-        nota: "★ ★ ★ ★ ☆",
-        status: "quero assistir",
+        nota: 4,
+        status: "quero",
         comentario: ""
     }
 ]
@@ -104,14 +98,38 @@ function renderizarCards(filmes) {
             <img src=${f.poster} alt="Poster de ${f.titulo}" width="200">
             <h2>${f.titulo}</h2>
             <p>${f.ano} - ${f.genero}<p>
-            <p>Nota: <span class="nota">${f.nota}</span></p>
-            <p><span class="badge ${f.status}">${f.status}</span></p>
+            <p>Nota: <span class="nota">${estrelas(f.nota)}</span></p>
+            <p><span class="badge ${f.status}">${rotuloStatus(f.status)}</span></p>
             <div class="acoes">
-                <button>Editar</button>
-                <button>Remover</button>
+                <button class="btn-editar">Editar</button>
+                <button class="btn-remover">Remover</button>
             </div>
         </article>`).join("");
     lista.innerHTML = cards;
 }
 
-renderizarCards(filmesIniciais);
+lista.addEventListener("click", (e) => {
+    const botao = e.target.closest(".btn-remover");
+    if (!botao) return; // clicou em outra coisa
+    if (!confirm("Remover este filme?")) return;
+    const card = botao.closest(".card");
+    const id = Number(card.dataset.id);
+    filmes = filmes.filter((f) => f.id !== id);
+    renderizarCards(filmes);
+});
+
+nav = document.querySelector("nav");
+nav.addEventListener("click", (e) => {
+    const botao = e.target.closest("button");
+    if (!botao) return;
+    nav.querySelector(".ativo")
+        .classList.remove("ativo");
+    botao.classList.add("ativo");
+    const status = botao.dataset.status;
+    renderizarCards(filmes.filter((f) =>
+        status === "todos" || f.status === status));
+});
+
+let filmes = [...filmesIniciais]
+
+renderizarCards(filmes);
