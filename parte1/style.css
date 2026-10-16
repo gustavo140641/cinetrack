@@ -54,14 +54,14 @@ header > h1 { font-size: 2rem; }
 header input {
     background: var(--cor-fundo);
     color: var(--cor-texto);
-    padding: 8px;
+    padding: 10px;
     border: 1px solid;
     border-radius: 8px;
     flex: 1 1 240px;
 }
 header button {
     display: flex;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid var(--cor-secundaria);
     border-radius: 8px;
     color: white;
@@ -162,10 +162,6 @@ nav button:hover {
 .card .acoes button:hover {
     background: black;
     color: var(--cor-botao);
-}
-
-input::placeholder {
-  font-size: 15px;
 }
 
 #modal {

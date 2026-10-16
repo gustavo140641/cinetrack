@@ -99,7 +99,11 @@ lista.addEventListener("click", (e) => {
     const card = botao.closest(".card");
     const id = Number(card.dataset.id);
     filmes = filmes.filter((f) => f.id !== id);
-    renderizarCards(filmes);
+
+    // renderizarCards(filmes);
+    filmes = filmes.filter((f) => f.id !== id);
+    salvar();
+    atualizar();
 });
 
 nav = document.querySelector("nav");
@@ -109,9 +113,11 @@ nav.addEventListener("click", (e) => {
     nav.querySelector(".ativo")
         .classList.remove("ativo");
     botao.classList.add("ativo");
-    const status = botao.dataset.status;
-    renderizarCards(filmes.filter((f) =>
-        status === "todos" || f.status === status));
+    // const status = botao.dataset.status;
+    // renderizarCards(filmes.filter((f) =>
+    //     status === "todos" || f.status === status));
+    statusAtual = botao.dataset.status;
+    atualizar();
 });
 
 let editandoId = null; // null: adicionando
@@ -128,13 +134,14 @@ document.querySelector("header button")
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !modal.hidden) {
+        salvar();
         fechar();
     }
 });
 
 const cancelar = document.getElementById("cancelar");
-
 cancelar.addEventListener("click", () => {
+    salvar();
     fechar();
 });
 
@@ -142,13 +149,12 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     const dados =
         Object.fromEntries(new FormData(form));
-    dados.ano = Number(dados.ano); // vem string!
+    dados.ano = Number(dados.ano);
     dados.nota = Number(dados.nota);
 
     const { valido, erros } = validarFilme(dados);
     if (!valido) { alert(erros.join("\n")); return; }
 
-    // no submit, após validar:
     if (editandoId !== null) {
         filmes = filmes.map((f) =>
             f.id === editandoId
@@ -158,7 +164,9 @@ form.addEventListener("submit", (e) => {
             { id: gerarId(filmes), ...dados }];
     }
 
-    renderizarCards(filmes);
+    // renderizarCards(filmes);
+    salvar();
+    atualizar();
     fechar();
 });
 
@@ -258,8 +266,7 @@ lista.addEventListener("click", (e) => {
     if (!botao) return;
     const card = botao.closest(".card");
     editandoId = Number(card.dataset.id);
-    const f = filmes.find(
-        (x) => x.id === editandoId);
+    const f = filmes.find((x) => x.id === editandoId);
     form.elements.titulo.value = f.titulo;
     form.elements.ano.value = f.ano;
     form.elements.genero.value = f.genero;
@@ -272,5 +279,49 @@ lista.addEventListener("click", (e) => {
 const gerarId = (lista) =>
     Math.max(0, ...lista.map((f) => f.id)) + 1;
 
-let filmes = [...filmesIniciais]
+let termoAtual = "";
+let statusAtual = "todos";
+
+function aplicarFiltros(lista, opcoes) {
+    const termo = opcoes.termo.toLowerCase();
+    return lista
+        .filter((f) => f.titulo.toLowerCase().includes(termo))
+        .filter((f) => opcoes.status === "todos" || f.status === opcoes.status);
+}
+
+function atualizar() {
+    const visiveis = aplicarFiltros(filmes,
+        { termo: termoAtual, status: statusAtual });
+    renderizarCards(visiveis);
+}
+
+function debounce(fn, ms = 300) {
+    let timer;
+    return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), ms);
+    }
+}
+
+const busca = document.querySelector("header input");
+
+const aoDigitar = (e) => {
+    termoAtual = e.target.value;
+    atualizar();
+}
+
+busca.addEventListener("input", debounce(aoDigitar, 300));
+
+const CHAVE = "cinetrack:filmes";
+const salvar = () => localStorage.setItem(CHAVE, JSON.stringify(filmes));
+function carregar() {
+    const txt = localStorage.getItem(CHAVE);
+    return txt
+        ? JSON.parse(txt)
+        : [...filmesIniciais];
+}
+
+// let filmes = [...filmesIniciais]
+let filmes = carregar();
+
 renderizarCards(filmes);
