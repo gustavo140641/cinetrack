@@ -54,16 +54,16 @@ header > h1 { font-size: 2rem; }
 header input {
     background: var(--cor-fundo);
     color: var(--cor-texto);
-    padding: 11px;
+    padding: 8px;
     border: 1px solid;
-    border-radius: 6px;
+    border-radius: 8px;
     flex: 1 1 240px;
 }
 header button {
     display: flex;
-    padding: 6px;
+    padding: 8px;
     border: 1px solid var(--cor-secundaria);
-    border-radius: 6px;
+    border-radius: 8px;
     color: white;
     background: var(--cor-secundaria);
 }
@@ -165,7 +165,7 @@ nav button:hover {
 }
 
 input::placeholder {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 #modal {
