@@ -191,3 +191,40 @@ nav button:hover {
 }
 
 #modal-conteudo { animation: aparecer 200ms ease; }
+
+#form-filme {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 10px 14px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px #0002;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: bold;
+}
+
+#form-filme input,
+#form-filme select,
+#form-filme textarea {
+    font-family: inherit;
+    font-size: 100%;
+    width: 100%;
+    padding: 6px;
+    border: 1px solid;
+    border-radius: 8px;
+}
+
+#form-filme button {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+#form-filme .btn-submit {
+    background: var(--cor-primaria);
+    color: white;
+}

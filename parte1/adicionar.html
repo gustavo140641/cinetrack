@@ -9,47 +9,47 @@
         <a href="index.html">← Voltar</a>
         <h1>Adicionar filme</h1>
         <form id="form-filme">
-            <label for="titulo">Título</label>
+            <div class="campo">
+                <label for="titulo">Título</label>
+                <input id="titulo" name="titulo" type="text" required>
+            </div>
             <br>
-            <input id="titulo" name="titulo" type="text" required>
+            <div class="campo">
+                <label for="ano">Ano</label>
+                <input id="ano" name="ano" type="number" min="1888" max="2030" step="1" required>
+            </div>
             <br>
+            <div class="campo">
+                <label for="genero">Gênero</label>
+                <input id="genero" name="genero" required>
+            </div>
             <br>
-            <label for="ano">Ano</label>
+            <div class="campo">
+                <label for="url">URL do pôster</label>
+                <input id="url" name="url" type="text">
+            </div>
             <br>
-            <input id="ano" name="ano" type="number" min="1888" max="2030" step="1" required>
+            <div class="campo">
+                <label for="status">Status</label>
+                <select id="status" name="status" required>
+                    <option value="assistido">Assistido</option>
+                    <option value="assisindo">Assistindo</option>
+                    <option value="quero assistir">Quero assistir</option>
+                </select>
+            </div>
             <br>
+            <div class="campo">
+                <label for="nota">Nota (1 a 5)</label>
+                <input id="nota" name="nota" type="number" min="1" max="5" step="1">
+            </div>
             <br>
-            <label for="genero">Gênero</label>
-            <br>
-            <input id="genero" name="genero" required>
-            <br>
-            <br>
-            <label for="url">URL do pôster</label>
-            <br>
-            <input id="url" name="url" type="text">
-            <br>
-            <br>
-            <label for="status">Status</label>
-            <br>
-            <select id="status" name="status" required>
-                <option value="assistido">Assistido</option>
-                <option value="assisindo">Assistindo</option>
-                <option value="quero assistir">Quero assistir</option>
-            </select>
-            <br>
-            <br>
-            <label for="nota">Nota (1 a 5)</label>
-            <br>
-            <input id="nota" name="nota" type="number" min="1" max="5" step="1">
-            <br>
-            <br>
-            <label for="comentario">Comentário</label>
-            <br>
-            <textarea id="comentario" name="comentario" rows="3" cols="50"></textarea>
-            <br>
+            <div class="campo">
+                <label for="comentario">Comentário</label>
+                <textarea id="comentario" name="comentario" rows="3" cols="50"></textarea>
+            </div>
             <br>
             <button type="button">Cancelar</button>
-            <button type="submit">Salvar</button>
+            <button type="submit" class="btn-submit">Salvar</button>
         </form>
     </body>
 </html>
