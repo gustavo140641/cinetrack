@@ -228,3 +228,19 @@ nav button:hover {
     background: var(--cor-primaria);
     color: white;
 }
+
+@media print {
+    header input, header button, nav, .card .acoes button, footer {
+        display: none;
+    }
+
+    :root {
+        --cor-fundo: white;
+        --cor-texto: black;
+    }
+
+    .card {
+        break-inside: avoid;
+        box-shadow: none;
+    }
+}
