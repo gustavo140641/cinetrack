@@ -240,7 +240,7 @@ nav button:hover {
     }
 
     .card {
-        break-inside: avoid;
+        page-break-inside: avoid;
         box-shadow: none;
     }
 }
