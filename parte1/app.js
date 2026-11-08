@@ -35,7 +35,7 @@ const filmesIniciais = [
         titulo: "A Origem",
         ano: 2010,
         genero: "Ficção científica",
-        url: "https://www.themoviedb.org/t/p/w600_and_h900_face/9e3Dz7aCANy5aRUQF745IlNloJ1.jpg",
+        poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/9e3Dz7aCANy5aRUQF745IlNloJ1.jpg",
         nota: 5,
         status: "assistido",
         comentario: ""
@@ -45,7 +45,7 @@ const filmesIniciais = [
         titulo: "Parasita",
         ano: 2019,
         genero: "Suspense",
-        url: "https://www.themoviedb.org/t/p/w600_and_h900_face/igw938inb6Fy0YVcwIyxQ7Lu5FO.jpg",
+        poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/igw938inb6Fy0YVcwIyxQ7Lu5FO.jpg",
         nota: 4,
         status: "assistido",
         comentario: ""
@@ -55,7 +55,7 @@ const filmesIniciais = [
         titulo: "O Auto da Compadecida",
         ano: 2000,
         genero: "Comédia",
-        url: "https://www.themoviedb.org/t/p/w600_and_h900_face/imcOp1kJsCsAFCoOtY5OnPrFbAf.jpg",
+        poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/imcOp1kJsCsAFCoOtY5OnPrFbAf.jpg",
         nota: 5,
         status: "assistido",
         comentario: ""
@@ -65,7 +65,7 @@ const filmesIniciais = [
         titulo: "Duna: Parte Dois",
         ano: 2024,
         genero: "Ficção científica",
-        url: "https://www.themoviedb.org/t/p/w600_and_h900_face/8LJJjLjAzAwXS40S5mx79PJ2jSs.jpg",
+        poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/8LJJjLjAzAwXS40S5mx79PJ2jSs.jpg",
         nota: 4,
         status: "assistindo",
         comentario: ""
@@ -75,7 +75,7 @@ const filmesIniciais = [
         titulo: "Interestelar",
         ano: 2014,
         genero: "Ficção científica",
-        url: "https://www.themoviedb.org/t/p/w600_and_h900_face/6ricSDD83BClJsFdGB6x7cM0MFQ.jpg",
+        poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/6ricSDD83BClJsFdGB6x7cM0MFQ.jpg",
         nota: 5,
         status: "quero",
         comentario: ""
@@ -85,7 +85,7 @@ const filmesIniciais = [
         titulo: "Cidade de Deus",
         ano: 2002,
         genero: "Drama",
-        url: "https://www.themoviedb.org/t/p/w600_and_h900_face/gfnXixcGC060QcG6JPxN6AMdVsq.jpg",
+        poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/gfnXixcGC060QcG6JPxN6AMdVsq.jpg",
         nota: 4,
         status: "quero",
         comentario: ""
@@ -139,8 +139,8 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-const cancelar = document.getElementById("cancelar");
-cancelar.addEventListener("click", () => {
+const cancelar = document.getElementById("btn-cancelar");
+btn-cancelar.addEventListener("click", () => {
     salvar();
     fechar();
 });
@@ -180,7 +180,7 @@ function validarFilme(filme) {
         erros.push("Ano inválido");
     if (!filme.genero)
         erros.push("Gênero obrigatório");
-    if (!filme.url)
+    if (!filme.poster)
         erros.push("URL do pôster obrigatória");
     if (!filme.nota)
         erros.push("Nota obrigatória")
@@ -210,11 +210,11 @@ function criarCard(f) {
     card.className = "card";
     card.dataset.id = f.id;
 
-    const url = document.createElement("img");
-    url.src = `${f.url}`
-    url.alt = `Poster de ${f.titulo}`
-    url.width = 200;
-    card.append(url)
+    const poster = document.createElement("img");
+    poster.src = `${f.poster}`
+    poster.alt = `Poster de ${f.titulo}`
+    poster.width = 200;
+    card.append(poster)
 
     const titulo = document.createElement("h2");
     titulo.textContent = f.titulo; // nunca HTML
@@ -270,7 +270,7 @@ lista.addEventListener("click", (e) => {
     form.elements.titulo.value = f.titulo;
     form.elements.ano.value = f.ano;
     form.elements.genero.value = f.genero;
-    form.elements.url.value = f.url;
+    form.elements.poster.value = f.poster;
     form.elements.nota.value = f.nota;
     form.elements.status.value = f.status;
     abrir();
