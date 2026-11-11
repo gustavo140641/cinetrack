@@ -1,8 +1,44 @@
+import { useState } from "react";
+// import Titulo from "./components/Titulo.jsx";
+import { filmesIniciais } from "./data/filmes.js";
+import Header from "./components/Header.jsx";
+import Filtros from "./components/Filtros.jsx";
+import ListaFilmes from "./components/ListaFilmes.jsx";
+
+function App() {
+  const [status, setStatus] = useState("todos");
+  const [busca, setBusca] = useState("");
+  // const visiveis = filmesIniciais.filter(
+  //   (filme) =>
+  //     status === "todos" || filme.status === status
+  // );
+  const visiveis = filmesIniciais
+    .filter((filme) => status === "todos" || filme.status === status)
+    .filter((filme) => filme.titulo
+      .toLowerCase()
+      .includes(busca.toLowerCase()));
+  return (
+    <>
+    <Header 
+      busca={busca}
+      aoBuscar={setBusca}
+    />
+    <Filtros 
+      ativo={status}
+      aoMudar={setStatus}
+    />
+    <ListaFilmes filmes={visiveis} />
+    </>
+  );
+}
+
+export default App;
+
 // import { useState } from 'react'
 // import heroImg from './assets/hero.png'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from './assets/vite.svg'
-import './App.css'
+// import './App.css'
 
 // function App() {
 //   const [count, setCount] = useState(0)
@@ -120,22 +156,3 @@ import './App.css'
 // }
 
 // export default App
-
-import Titulo from "./components/Titulo.jsx";
-import { filmesIniciais } from "./data/filmes.js";
-import Header from "./components/Header.jsx";
-import Filtros from "./components/Filtros.jsx";
-import ListaFilmes from "./components/ListaFilmes.jsx";
-
-function App() {
-  return (
-    <>
-    <Titulo />
-    <Header />
-    <Filtros />
-    <ListaFilmes filmes={filmesIniciais} />
-    </>
-  );
-}
-
-export default App;
