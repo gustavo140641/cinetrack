@@ -8,7 +8,7 @@ const ROTULOS = {
     quero: "Quero assistir",
 }
 
-export default function CardFilme({ filme }) {
+export default function CardFilme({ filme, aoEditar, aoRemover }) {
     return (
         <article className="card">
             <img src={filme.poster} alt="" />
@@ -17,8 +17,12 @@ export default function CardFilme({ filme }) {
             <p>Nota: <span className="nota">{estrelas(filme.nota)}</span></p>
             <p><span className="badge {filme.status}">{filme.status}</span></p>
             <div className="acoes">
-                <button className="btn-editar">Editar</button>
-                <button className="btn-remover">Remover</button>
+                <button onClick={() => aoEditar(filme)}>
+                    Editar
+                </button>
+                <button onClick={() => aoRemover(filme.id)}>
+                    Remover
+                </button>
             </div>
         </article>
     );

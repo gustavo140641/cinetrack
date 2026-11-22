@@ -1,33 +1,85 @@
 import { useState } from "react";
-// import Titulo from "./components/Titulo.jsx";
-import { filmesIniciais } from "./data/filmes.js";
+import { filmesIniciais, gerarId }
+  from "./data/filmes.js";
 import Header from "./components/Header.jsx";
 import Filtros from "./components/Filtros.jsx";
 import ListaFilmes from "./components/ListaFilmes.jsx";
+import ModalFilme from "./components/ModalFilme.jsx";
 
 function App() {
+  const [editando, setEditando] = useState(null);
+  const [filmes, setFilmes] = useState(filmesIniciais);
   const [status, setStatus] = useState("todos");
   const [busca, setBusca] = useState("");
-  // const visiveis = filmesIniciais.filter(
-  //   (filme) =>
-  //     status === "todos" || filme.status === status
-  // );
-  const visiveis = filmesIniciais
+  const visiveis = filmes
     .filter((filme) => status === "todos" || filme.status === status)
     .filter((filme) => filme.titulo
       .toLowerCase()
       .includes(busca.toLowerCase()));
+
+  function adicionar(novoFilme) {
+    setFilmes((anteriores) => [
+      ...anteriores, { ...novoFilme, id: gerarId(anteriores) }
+    ]);
+  }
+
+  function remover(id) {
+    setFilmes((prevFilmes) =>
+      prevFilmes.filter((filme) => filme.id !== id))
+  }
+
+  function editar(id, alteracoes) {
+    setFilmes((filmesAtuais) =>
+      filmesAtuais.map((filme) =>
+        filme.id === id ? { ...filme, ...alteracoes } : filme
+      )
+    );
+  };
+
+  // function editar(id, alteracoes) {
+  //   setFilmes(function (filmesAtuais) {
+  //     return filmesAtuais.map(function (filme) {
+  //       if (filme.id === id) {
+  //         return { ...filme, ...alteracoes };
+  //       }
+  //       return filme;
+  //     });
+  //   });
+  // }
+
+  function salvar(dados) {
+    if (editando.id) {
+      editar(editando.id, dados);
+    } else {
+      adicionar(dados);
+    }
+    
+    setEditando(null);
+  }
+  
   return (
     <>
     <Header 
       busca={busca}
       aoBuscar={setBusca}
+      aoAdicionar={() => setEditando({})}
     />
     <Filtros 
       ativo={status}
       aoMudar={setStatus}
     />
-    <ListaFilmes filmes={visiveis} />
+    <ListaFilmes
+      filmes={visiveis}
+      aoEditar={setEditando}
+      aoRemover={remover}
+    />
+    {editando !== null && (
+      <ModalFilme
+        filme={editando}
+        aoSalvar={salvar}
+        aoFechar={() => setEditando(null)}
+      />
+    )}
     </>
   );
 }

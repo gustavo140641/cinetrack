@@ -53,3 +53,6 @@ export const filmesIniciais = [
         poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/gfnXixcGC060QcG6JPxN6AMdVsq.jpg"
     }
 ];
+
+export const gerarId = (filmesIniciais) =>
+    Math.max(0, ...filmesIniciais.map((f) => f.id)) + 1;
