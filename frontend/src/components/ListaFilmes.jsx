@@ -6,9 +6,6 @@ export default function ListaFilmes({ filmes, aoEditar, aoRemover }) {
     }
     return (
         <section id="lista" aria-live="polite">
-            {/* {filmes.map((f) => (
-                <CardFilme key={f.id} filme={f} />
-            ))} */}
             {filmes.map((filme) => (
                 <CardFilme
                     key={filme.id}
