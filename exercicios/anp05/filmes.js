@@ -4,7 +4,7 @@ export const filmesIniciais = [
         titulo: "A Origem",
         ano: 2010,
         genero: "Ficção científica",
-        url: "https://www.themoviedb.org/t/p/w600_and_h900_face/9e3Dz7aCANy5aRUQF745IlNloJ1.jpg",
+        poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/9e3Dz7aCANy5aRUQF745IlNloJ1.jpg",
         nota: 5,
         status: "assistido",
         comentario: ""
@@ -14,7 +14,7 @@ export const filmesIniciais = [
         titulo: "Parasita",
         ano: 2019,
         genero: "Suspense",
-        url: "https://www.themoviedb.org/t/p/w600_and_h900_face/igw938inb6Fy0YVcwIyxQ7Lu5FO.jpg",
+        poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/igw938inb6Fy0YVcwIyxQ7Lu5FO.jpg",
         nota: 4,
         status: "assistido",
         comentario: ""
@@ -24,7 +24,7 @@ export const filmesIniciais = [
         titulo: "O Auto da Compadecida",
         ano: 2000,
         genero: "Comédia",
-        url: "https://www.themoviedb.org/t/p/w600_and_h900_face/imcOp1kJsCsAFCoOtY5OnPrFbAf.jpg",
+        poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/imcOp1kJsCsAFCoOtY5OnPrFbAf.jpg",
         nota: 5,
         status: "assistido",
         comentario: ""
@@ -34,7 +34,7 @@ export const filmesIniciais = [
         titulo: "Duna: Parte Dois",
         ano: 2024,
         genero: "Ficção científica",
-        url: "https://www.themoviedb.org/t/p/w600_and_h900_face/8LJJjLjAzAwXS40S5mx79PJ2jSs.jpg",
+        poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/8LJJjLjAzAwXS40S5mx79PJ2jSs.jpg",
         nota: 4,
         status: "assistindo",
         comentario: ""
@@ -44,7 +44,7 @@ export const filmesIniciais = [
         titulo: "Interestelar",
         ano: 2014,
         genero: "Ficção científica",
-        url: "https://www.themoviedb.org/t/p/w600_and_h900_face/6ricSDD83BClJsFdGB6x7cM0MFQ.jpg",
+        poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/6ricSDD83BClJsFdGB6x7cM0MFQ.jpg",
         nota: 5,
         status: "quero",
         comentario: ""
@@ -54,7 +54,7 @@ export const filmesIniciais = [
         titulo: "Cidade de Deus",
         ano: 2002,
         genero: "Drama",
-        url: "https://www.themoviedb.org/t/p/w600_and_h900_face/gfnXixcGC060QcG6JPxN6AMdVsq.jpg",
+        poster: "https://www.themoviedb.org/t/p/w600_and_h900_face/gfnXixcGC060QcG6JPxN6AMdVsq.jpg",
         nota: 4,
         status: "quero",
         comentario: ""
