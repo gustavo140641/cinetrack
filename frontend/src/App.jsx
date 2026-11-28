@@ -15,12 +15,28 @@ function App() {
   const [editando, setEditando] = useState(null);
   const [status, setStatus] = useState("todos");
   const [busca, setBusca] = useState("");
-  console.log("render");
+  // console.log("render");
   const visiveis = filmes
     .filter((filme) => status === "todos" || filme.status === status)
     .filter((filme) => filme.titulo
       .toLowerCase()
       .includes(busca.toLowerCase()));
+
+  async function salvar(filme) {
+    if (filme.id) {
+      const at = await atualizar(filme.id, filme);
+      setFilmes(fs => fs.map(
+        f => f.id === at.id ? at : f));
+    } else {
+      const novo = await criar(filme);
+      setFilmes(fs => [...fs, novo]);
+    }
+  }
+
+  async function removerFilme(id) {
+    await remover(id);
+    setFilmes(fs => fs.filter(f => f.id !== id));
+  }
       
   useEffect(() => {
     document.title = `CineTrack (${filmes.length})`;
@@ -28,7 +44,8 @@ function App() {
 
   useEffect(() => {
     listar()
-      .then((dados) => setFilmes(dados))
+      // .then((dados) => setFilmes(dados))
+      .then(setFilmes)
       .catch((erro) => setErro(erro.message))
       .finally(() => setCarregando(false));
   }, []);

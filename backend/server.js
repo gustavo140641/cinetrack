@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
+app.use(cors()); // libera o frontend
 
 app.get("/", (req, res) => {
     res.json({ ola: "CineTrack" });
@@ -75,9 +77,6 @@ app.delete("/filmes/:id", (req, res) => {
     salvarFilmes(lista.filter(f => f.id !== id));
     res.sendStatus(204); // sucesso, sem corpo
 });
-
-const cors = require("cors");
-app.use(cors()); // libera o frontend
 
 const porta = process.env.PORT || 3000;
 app.listen(porta, () => console.log(`API na porta ${porta}`));
